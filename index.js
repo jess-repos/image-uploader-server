@@ -12,6 +12,8 @@ app.listen(process.env.API_PORT || 3000);
 app.use(express.json());
 app.use(cors());
 
+
+
 // enable files upload
 app.use(
   fileUpload({
@@ -21,6 +23,10 @@ app.use(
 
 // route middlewares
 app.use("/api/uploader", require("./routes/uploader"));
+
+app.get("/", (req, res) => {
+  res.send("Image Uploade API")
+})
 
 // connect to database and run server
 const run = async () => {
