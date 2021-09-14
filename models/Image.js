@@ -1,6 +1,13 @@
 const mongoose = require("mongoose");
 const imageSchema = new mongoose.Schema({
-  name: { type: String },
-  url: { type: String },
+  name: String,
+  fileName: String,
+  url: String,
+  size: Number,
+  encoding: String,
+  tempFilePath: String,
+  truncated: Boolean,
+  mimetype: String,
+  md5: String,
 });
-module.exports = mongoose.model("Image", imageSchema);
+module.exports = new mongoose.model("Image", imageSchema);

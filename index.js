@@ -2,17 +2,16 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
-// const Image = require("./models/Image");
 require("dotenv").config();
+const path = require("path");
 
 const app = express();
-app.listen(process.env.API_PORT || 3000);
+app.listen(process.env.API_PORT);
+app.use("/images", express.static(path.join(__dirname, "uploads")));
 
 // middlewares
-app.use(express.json());
-app.use(cors());
-
-
+// app.use(express.json()); // json parser
+app.use(cors()); // cross site
 
 // enable files upload
 app.use(
@@ -24,15 +23,11 @@ app.use(
 // route middlewares
 app.use("/api/uploader", require("./routes/uploader"));
 
-app.get("/", (req, res) => {
-  res.send("Image Uploade API")
-})
-
 // connect to database and run server
 const run = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://nine:root@nine-nfire.f9yn8.mongodb.net/image-uploader?retryWrites=true&w=majority",
+      process.env.DB_CONNECT,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
