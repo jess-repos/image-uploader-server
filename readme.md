@@ -29,17 +29,17 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
 
 ### middlewares
 
-- serve static files from /upload folder to "localhost:7000/images/:filename"
+- serve static files from /upload folder to "localhost:7000/images/:filename"\
   app.use("/images", express.static(path.join(\_\_dirname, "uploads")));
 
-- using cors to allow access from create-react-app
-  app.use(cors()); // cross site
+- using cors to allow access from create-react-app\
+  app.use(cors());
 
-- enable file upload / allow access to request.files
-  app.use(
-  fileUpload({  
-   createParentPath: true,
-  })
+- enable file upload / allow access to request.files\
+  app.use(\
+  fileUpload({  \
+   createParentPath: true,\
+  })\
   );
 
 - upload router  
