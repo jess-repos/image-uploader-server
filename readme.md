@@ -80,6 +80,9 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
 
 - using try/catch, if there is something wrong when writing the file or uploading to the database, it will respond with a simple object\
   res.status(500).send({ error: true });
+- otherwise i will send the url of the image uploaded to the server\
+   res.send(url);
 
 ## RELATED
+
 - client app for the image-uploader https://github.com/jess-repos/image-uploader
