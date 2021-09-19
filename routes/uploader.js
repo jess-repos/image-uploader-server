@@ -5,10 +5,6 @@ const router = require("express").Router();
 const fs = require("fs");
 
 //middleware{}
-const ah = (req, res, next) => {
-  console.log(req.files.imageFile.name);
-  next();
-};
 
 router.post("/upload", ah, async (req, res, next) => {
   console.log("Request POST: /api/uploader/upload");
@@ -42,10 +38,6 @@ router.post("/upload", ah, async (req, res, next) => {
   console.log(url);
 
   res.send(url);
-  // } catch (err) {
-  //   console.log("failed to upload", err);
-  //   res.send(err);
-  // }
 });
 
 router.post("/test", async (req, res) => {
@@ -65,9 +57,3 @@ router.delete("/wipe", async (req, res) => {
 
 module.exports = router;
 
-// const image = new Image({
-//   name: imageName,
-//   url: url,
-// });
-// const savedImage = await image.save();
-// console.log(savedImage);
