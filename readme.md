@@ -11,6 +11,7 @@ server code for image-uploader app
 - fs - allow use of file system / writing files to the server
 - mongodb - database used
 - mongoose - allow use of models and validations for mongodb objects
+- uuidv4 - generate a unique name of the image to avoid duplicates
 
 ## how to start
 
@@ -65,3 +66,6 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
 ### routes
 - upload route [POST] http://localhost:7000/api/upload - upload a single file
 - wipe route [DELETE] http://localhost:7000/api/wipe - wipe all the image objects on the database
+
+### uploading a file, how it works
+- 

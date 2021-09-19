@@ -16,6 +16,7 @@
     "express-fileupload": "^1.2.1",
     "fs": "*",
     "mongodb": "^4.1.1",
-    "mongoose": "^6.0.5"
+    "mongoose": "^6.0.5",
+    "uuidv4": "^6.2.12"
   }
 }

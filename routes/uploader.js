@@ -3,21 +3,22 @@ const Image = require("../models/Image");
 const router = require("express").Router();
 
 const fs = require("fs");
+const { uuid } = require("uuidv4");
 
 //middleware{}
 
-router.post("/upload", ah, async (req, res, next) => {
+router.post("/upload", async (req, res, next) => {
   console.log("Request POST: /api/uploader/upload");
   const { imageFile } = req.files;
   const { name, data, size, encoding, tempFilePath, truncated, mimetype, md5 } =
     imageFile;
-  let fileName = uuid() + imageFile.name.toLowerCase().replace(" ", "-");
-  await fs.writeFileSync("uploads/" + fileName, data);
-  // let test = await fs.readFileSync("uploads/" + fileName);
-  let url = "http://localhost:7000/images/" + fileName;
-
+  let fileName = uuid() + "-" + imageFile.name.toLowerCase().replace(" ", "-");
+  console.log("FILENAME: " + fileName);
 
   try {
+    await fs.writeFileSync("uploads/" + fileName, data);
+    // let test = await fs.readFileSync("uploads/" + fileName);
+    let url = "http://localhost:7000/images/" + fileName;
     let imageObject = new Image({
       name: name,
       fileName: fileName,
@@ -31,15 +32,12 @@ router.post("/upload", ah, async (req, res, next) => {
     });
     const response = await imageObject.save();
     console.log(response);
+    res.send(url);
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: true });
   }
-  console.log(url);
-
-  res.send(url);
 });
-
 
 router.delete("/wipe", async (req, res) => {
   console.log("[WARNING] Deleting all records!");
@@ -52,4 +50,3 @@ router.delete("/wipe", async (req, res) => {
 });
 
 module.exports = router;
-
