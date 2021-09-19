@@ -47,7 +47,7 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
 
 ### models
 
-- the image object simply constists of the original image information and the url of the static image uploader to the server.\
+- the image object simply constists of the original image information and the url of the static image uploaded to the server.\
   const mongoose = require("mongoose");\
   const imageSchema = new mongoose.Schema({\
   name: String,\
@@ -61,3 +61,7 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
   md5: String,\
   });\
   module.exports = new mongoose.model("Image", imageSchema);
+
+### routes
+- upload route [POST] http://localhost:7000/api/upload - upload a single file
+- wipe route [DELETE] http://localhost:7000/api/wipe - wipe all the image objects on the database

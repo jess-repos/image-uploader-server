@@ -40,10 +40,6 @@ router.post("/upload", ah, async (req, res, next) => {
   res.send(url);
 });
 
-router.post("/test", async (req, res) => {
-  console.log(req.body);
-  console.log(req.files);
-});
 
 router.delete("/wipe", async (req, res) => {
   console.log("[WARNING] Deleting all records!");
