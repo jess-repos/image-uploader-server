@@ -38,7 +38,7 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
 
 - enable file upload / allow access to request.files\
   app.use(\
-  fileUpload({  \
+  fileUpload({ \
    createParentPath: true,\
   })\
   );
@@ -64,8 +64,19 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
   module.exports = new mongoose.model("Image", imageSchema);
 
 ### routes
-- upload route [POST] http://localhost:7000/api/upload - upload a single file
-- wipe route [DELETE] http://localhost:7000/api/wipe - wipe all the image objects on the database
+
+- upload route [POST] http://localhost:7000/api/uploader/upload - upload a single file
+- wipe route [DELETE] http://localhost:7000/api/uploader/wipe - wipe all the image objects on the database
 
 ### uploading a file, how it works
-- 
+
+1. deconstruct the file object from request.files
+2. generate a new file name for the file to avoid duplicates on the server
+3. get the buffer data from the file object and write it to a new file on the server to the /uploads folder with the new generated file name
+4. create a new object from the image model inheriting all the previous information of the file and add the url for the image file uploaded
+5. upload the new image object to the database
+
+### response
+
+- using try/catch, if there is something wrong when writing the file or uploading to the database, it will respond with a simple object\
+  res.status(500).send({ error: true });
