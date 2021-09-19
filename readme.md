@@ -20,5 +20,9 @@ server code for image-uploader app
 2. npm install - this will install all the packages required by from the package.json file
 3. open .env file and use your own mongodb url on the DB_CONNECT variable
 4. install nodemon by running "npm install nodemon" from the terminal, alternatively, you can install nodemon globally by running "npm install -g nodemon" on the terminal
+5. run "npm start" on the terminal
 
+### how the code works
+the app mostly uses try/catch and async/await rather than .then/.catch to have a cleaner and more readable code.
+asdasdasdasd
 
