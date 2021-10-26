@@ -47,21 +47,23 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
    app.use("/api/uploader", require("./routes/uploader"));
 
 ### models
+the image object simply constists of the original image information and the url of the static image uploaded to the server.\
 
-- the image object simply constists of the original image information and the url of the static image uploaded to the server.\
-  const mongoose = require("mongoose");\
-  const imageSchema = new mongoose.Schema({\
-  name: String,\
-  fileName: String,
-  url: String,\
-  size: Number,\
-  encoding: String,\
-  tempFilePath: String,\
-  truncated: Boolean,\
-  mimetype: String,\
-  md5: String,\
-  });\
+```
+  const mongoose = require("mongoose");
+  const imageSchema = new mongoose.Schema({
+     name: String,
+     fileName: String,
+     url: String,
+     size: Number,
+     encoding: String,
+     tempFilePath: String,
+     truncated: Boolean,
+     mimetype: String,
+     md5: String,
+  });
   module.exports = new mongoose.model("Image", imageSchema);
+```
 
 ### routes
 
