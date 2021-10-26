@@ -47,7 +47,7 @@ the app mostly uses try/catch and async/await rather than .then/.catch to have a
    app.use("/api/uploader", require("./routes/uploader"));
 
 ### models
-the image object simply constists of the original image information and the url of the static image uploaded to the server.\
+the image object simply constists of the original image information and the url of the static image uploaded to the server.
 
 ```
   const mongoose = require("mongoose");
